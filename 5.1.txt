@@ -1,0 +1,14 @@
+CREATE USER 'user_1'@'localhost' IDENTIFIED BY '1234';
+CREATE USER 'user_2'@'localhost' IDENTIFIED BY '1234';
+
+RENAME USER 'user_2'@'localhost' TO 'user_3'@'localhost';
+ALTER USER 'user_3'@'localhost' IDENTIFIED BY '123456';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON dbsm.employee TO 'user_1'@'localhost';
+
+GRANT SELECT ON dbsm.salary TO 'user_1'@'localhost' WITH GRANT OPTION;
+
+GRANT SELECT ON dbsm.salary TO 'user_3'@'localhost';
+
+
+REVOKE SELECT ON dbsm.employee FROM 'user_1'@'localhost';
